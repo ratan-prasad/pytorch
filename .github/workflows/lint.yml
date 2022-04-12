@@ -22,6 +22,9 @@ jobs:
       # deep clone (fetch-depth 0 required to use git merge-base)
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: composite
         uses: ./.github/actions/echo/other
   quick-checks:
@@ -36,6 +39,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Clean PyTorch checkout
         run: |
           # Remove any artifacts from the previous checkouts
@@ -145,6 +151,9 @@ jobs:
       # deep clone (fetch-depth 0 required to use git merge-base)
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Run clang-format
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -184,6 +193,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Attempt to run setup.py
         run: |
           if ! python2 setup.py | grep -q "Python 2 has reached end-of-life and is no longer supported by PyTorch."; then
@@ -205,6 +217,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Install requirements
         id: requirements
         run: |
@@ -215,6 +230,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Regenerate workflows
         id: generate_workflows
         run: .github/scripts/generate_ci_workflows.py
@@ -290,6 +308,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Install markdown-toc
         run: npm install -g markdown-toc
       - name: Regenerate ToCs and check that they didn't change
@@ -329,6 +350,9 @@ jobs:
       # fetch-depth 2 required to allow us to use github.event.pull_request.head.sha
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Prepare output dir with HEAD commit SHA
         env:
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
@@ -394,6 +418,7 @@ jobs:
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
         with:
           no-sudo: true
+          other-refs: refs/heads/master
           submodules: false
       - name: Prepare output dir with HEAD commit SHA
         env:
@@ -488,6 +513,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Install dependencies
         run: |
           set -eux
@@ -512,6 +540,9 @@ jobs:
       # [see note: pytorch repo ref]
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Install dependencies
         run: |
           set -eux
@@ -557,6 +588,9 @@ jobs:
       # deep clone (fetch-depth 0) required, to allow us to use git log
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Install dependencies
         # mypy and boto3 versions copied from
         # .circleci/docker/common/install_conda.sh
@@ -587,6 +621,9 @@ jobs:
       # deep clone (fetch-depth 0) required, to allow us to use git log
       - name: Checkout PyTorch
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@clee2000/please-ignore
+        with:
+          other-refs: refs/heads/master
+          submodules: false
       - name: Install torch
         if: matrix.with_torch == 'with_torch'
         run: |
