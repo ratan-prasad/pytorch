@@ -74,7 +74,9 @@ command = [
 code = 'MYPY'
 include_patterns = [
     'torch/**/*.py',
+    'torch/**/*.pyi',
     'caffe2/**/*.py',
+    'caffe2/**/*.pyi',
     'test/test_bundled_images.py',
     'test/test_bundled_inputs.py',
     'test/test_complex.py',
@@ -90,6 +92,8 @@ exclude_patterns = [
     'torch/include/**',
     'torch/csrc/**',
     'torch/distributed/elastic/agent/server/api.py',
+    'torch/testing/_internal/**',
+    'torch/distributed/fsdp/fully_sharded_data_parallel.py'
 ]
 command = [
     'python3',
